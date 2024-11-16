@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppRoutes from './routes/AppRoutes';
+import { ForumProvider } from './context/ForumContext';
+import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
+import { ModeratorProvider } from './context/ModeratorContext';
+import { AchievementsProvider } from './context/AchievementsContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <NotificationProvider>
+        <ModeratorProvider>
+          <AchievementsProvider>
+            <ForumProvider>
+              <AppRoutes />
+            </ForumProvider>
+          </AchievementsProvider>
+        </ModeratorProvider>
+      </NotificationProvider>
+    </AuthProvider>
   );
 }
 
